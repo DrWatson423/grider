@@ -1,13 +1,37 @@
+import {useState} from "react";
+
+
 const Hero = () => {
+  const [location, setLocation] = useState("");
+  const [ride, setRide] = useState("Motorcycle");
+  const [deliveryType, setDeliveryType] = useState("Food");
+  const [loading, setLoading] = useState("false");
+
+
+  const handleSearch = () =>{
+    if (!location.trim()){
+      alert("Please enter a location");
+      return;
+    }
+ 
+     setLoading(true);
+
+     setTimeout(() => {
+      setLoading(false);
+
+      alert(
+        `Searching for ${ride} riders delivering ${deliveryType} in ${location}`
+      );
+    }, 1500);
+  }
+
   return (
     <section className="bg-green-50 py-24">
       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
 
         {/* Left Side */}
         <div>
-          <h1 className="text-3xl font-bold underline bg-teal-600">
-      Tailwind is Working!
-      </h1>
+          
           <h1 className="text-5xl font-bold leading-tight">
             Find Trusted
             <span className="text-green-600"> Delivery Riders </span>
@@ -24,13 +48,42 @@ const Hero = () => {
             <input
               type="text"
               placeholder="Enter your location..."
+              value={location}
+              onChange={(e)=> setLocation(e.target.value)}
               className="flex-1 px-5 py-3 border rounded-lg outline-none focus:ring-2 focus:ring-green-500"
             />
 
-            <button className="bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-700">
-              Find Rider
-            </button>
+            <select
+                value={ride}
+                onChange={(e) => setRide(e.target.value)}
+                className="border rounded-lg p-3"
+              >
+                <option>Motorcycle</option>
+                <option>Bike</option>
+                <option>Car</option>
+              </select>
+
+              <select
+                value={deliveryType}
+                onChange={(e) => setDeliveryType(e.target.value)}
+                className="border rounded-lg p-3"
+              >
+                <option>Food</option>
+                <option>Parcel</option>
+                <option>Groceries</option>
+              </select>
+
+
+
+           
           </div>
+
+           <button
+              onClick={handleSearch}
+              className="mt-5 w-full bg-green-600 hover:bg-green-700 transition text-white rounded-lg py-4 font-semibold"
+            >
+              {loading ? "Searching..." : "Find Rider"}
+            </button>
         </div>
 
         {/* Right Side */}
@@ -40,11 +93,13 @@ const Hero = () => {
             alt="Delivery Rider"
             className="rounded-2xl shadow-xl"
           />
+          
         </div>
 
       </div>
     </section>
   );
-};
+ };
+
 
 export default Hero;
