@@ -19,7 +19,7 @@ const RiderCard = ({ rider }) => {
         </p>
 
         <p className="mt-2">
-          {rider.vehicle}
+          {rider.ride}
         </p>
 
         <p>
