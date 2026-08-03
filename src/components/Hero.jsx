@@ -1,28 +1,49 @@
 import {useState} from "react";
+import riders from "../data/riders";
 
 
-const Hero = () => {
+
+
+const Hero = ({setFilteredRiders}) => {
   const [location, setLocation] = useState("");
   const [ride, setRide] = useState("Motorcycle");
   const [deliveryType, setDeliveryType] = useState("Food");
-  const [loading, setLoading] = useState("false");
+  const [loading, setLoading] = useState(false);
 
 
   const handleSearch = () =>{
-    if (!location.trim()){
-      alert("Please enter a location");
-      return;
-    }
+    console.log("search clicked")
+
+      setLoading(true);
+
+   
+    const results = riders.filter((rider) => {
+  console.log(rider);
+
+  console.log("Location match:", rider.location.toLowerCase().includes(location.toLowerCase()));
+  console.log("Ride match:", rider.ride === ride);
+  console.log("Delivery match:", rider.deliveryType === deliveryType);
+
+  return (
+    rider.location.toLowerCase().includes(location.toLowerCase()) &&
+    rider.ride === ride &&
+    rider.deliveryType === deliveryType
+  );
+});
+    console.log(results);
+    setFilteredRiders(results);;
+ 
  
      setLoading(true);
 
      setTimeout(() => {
       setLoading(false);
 
-      alert(
-        `Searching for ${ride} riders delivering ${deliveryType} in ${location}`
-      );
+      // alert(
+      //   `Searching for ${ride} riders delivering ${deliveryType} in ${location}`
+      // );
     }, 1500);
+  
   }
 
   return (
@@ -99,7 +120,7 @@ const Hero = () => {
       </div>
     </section>
   );
- };
-
+ 
+}
 
 export default Hero;
