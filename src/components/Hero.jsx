@@ -1,7 +1,10 @@
 import {useState} from "react";
+import riders from "../data/riders";
 
 
-const Hero = () => {
+
+
+const Hero = ({setFilteredRiders}) => {
   const [location, setLocation] = useState("");
   const [ride, setRide] = useState("Motorcycle");
   const [deliveryType, setDeliveryType] = useState("Food");
@@ -10,7 +13,17 @@ const Hero = () => {
 
   const handleSearch = () =>{
     if (!location.trim()){
-      alert("Please enter a location");
+       const results = riders.filter((rider) => {
+    return (
+      rider.location
+        .toLowerCase()
+        .includes(location.toLowerCase()) &&
+      rider.ride === ride &&
+      rider.deliveryType === deliveryType
+    );
+  });
+  console.log(results);
+  setFilteredRiders(results);;
       return;
     }
  

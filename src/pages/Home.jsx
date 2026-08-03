@@ -4,6 +4,9 @@ import Hero from "../components/Hero";
 import RiderCard from "../components/RiderCard";
 import riders from "../data/riders";
 
+
+//to do: let find rider update cards
+
 const Home = () => {
   const [filteredRiders, setFilteredRiders] = useState(riders);
 
