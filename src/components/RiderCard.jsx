@@ -1,3 +1,8 @@
+import {Link} from "react-router-dom"
+
+
+
+
 const RiderCard = ({ rider }) => {
   return (
     <div className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl hover:-translate-y-2 transition">
@@ -34,15 +39,12 @@ const RiderCard = ({ rider }) => {
           {rider.deliveries} Deliveries
         </p>
 
-        <button
-          className={`w-full mt-5 py-3 rounded-lg text-white ${
-            rider.available
-              ? "bg-green-600 hover:bg-green-700"
-              : "bg-gray-400 cursor-not-allowed"
-          }`}
+        <Link
+          to={`/riders/${rider.id}`}
+          className="block mt-5 bg-green-600 text-white text-center py-3 rounded-lg hover:bg-green-700"
         >
-          {rider.available ? "Hire Rider" : "Unavailable"}
-        </button>
+          View Profile
+        </Link>
 
       </div>
     </div>
