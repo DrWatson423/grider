@@ -10,133 +10,13 @@ The backend is built with **Node.js, Express.js, MongoDB, Mongoose, JWT, and bcr
 
 ### Authentication
 
-* User registration
-* Password hashing with bcrypt
-* User login
-* JWT token generation
-* Protected API routes
-* User profile retrieval
+User registers and logs in using protected routes through JWT tokens.
 * User roles:
 
   * Customer
   * Rider
   * Admin
 
-### Database
-
-* MongoDB Atlas
-* Mongoose ODM
-* User schema
-* Environment-based database configuration
-
----
-
-## 🛠️ Tech Stack
-
-| Technology     | Purpose                        |
-| -------------- | ------------------------------ |
-| Node.js        | Backend runtime                |
-| Express.js     | REST API framework             |
-| MongoDB Atlas  | Database                       |
-| Mongoose       | MongoDB object modeling        |
-| bcrypt         | Password hashing               |
-| JSON Web Token | Authentication                 |
-| dotenv         | Environment variables          |
-| CORS           | Frontend/backend communication |
-| Nodemon        | Development server             |
-
----
-
-## Project Structure
-
-```text
-backend/
-│
-├── src/
-│   │
-│   ├── config/
-│   │   └── db.js
-│   │
-│   ├── controllers/
-│   │   └── authController.js
-│   │
-│   ├── middleware/
-│   │   └── authMiddleware.js
-│   │
-│   ├── models/
-│   │   └── User.js
-│   │
-│   ├── routes/
-│   │   └── authRoutes.js
-│   │
-│   ├── app.js
-│   └── server.js
-│
-├── .env
-├── .gitignore
-├── package.json
-└── README.md
-```
-
----
-
-# ⚙️ Installation
-
-## 1. Clone the repository
-
-```bash
-git clone <repository-url>
-```
-
-Navigate into the backend:
-
-```bash
-cd backend
-```
-
----
-
-## 2. Install dependencies
-
-```bash
-npm install
-```
-
----
-
-## 3. Configure environment variables
-
-Create a `.env` file in the backend root:
-
-```env
-PORT=5000
-
-MONGO_URI=your_mongodb_connection_string
-
-JWT_SECRET=your_jwt_secret
-```
-
-### Example
-
-```env
-PORT=5000
-
-MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/grider
-
-JWT_SECRET=your_secure_random_secret
-```
-
-**Never commit `.env` to GitHub.**
-
-Use `.env.example` to document required environment variables:
-
-```env
-PORT=5000
-MONGO_URI=
-JWT_SECRET=
-```
-
----
 
 # Running the Server
 
@@ -166,9 +46,7 @@ Server running on port 5000
 The API can be tested using:
 
 * Thunder Client
-* Postman
-* Insomnia
-* cURL
+
 
 ---
 
